@@ -8,12 +8,42 @@ export default function Home() {
   const [albumCount, setAlbumCount] = useState([]);
   const [isAll, setIsAll] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
-  function Search(...args) {
-    let arr;
-    if(isAll){
-      
-    }else{
+  function Search(m) {
+    function handleArr(name) {
+      if (isAll) {
+        return data.filter((e) => e[name] && e["ms_played"]);
+      } else {
+        const lastYear = new Date().getFullYear() - 1;
+        return data.filter(
+          (e) =>
+            e[name] &&
+            e["ms_played"] &&
+            e["ts"].split("-")[0] === lastYear.toString()
+        );
+      }
+    }
+    const ranges = [...new Set(handleArr(m).map((ele) => ele[m]))];
+    const countObj = [];
+    if (m === "master_metadata_album_artist_name") {
+      ranges.map((item) => {
+        const count = handleArr(m).filter((ele) => ele[m] === item).length;
+        countObj.push({ name: item, times: count });
+      });
+      const final = countObj.sort((a, b) => b.times - a.times).slice(0, 100);
+      artistCount.push(...final);
+      setArtistCount([...final]);
+    } else {
+      ranges.map((item) => {
+        const count = handleArr(m).filter((ele) => ele[m] === item).length;
+        const tatalMs = handleArr(m)
+          .filter((ele) => ele[m] === item)
+          .map((e) => e["ms_played"])
+          .reduce((a, b) => a + b, 0);
+        countObj.push({ name: item, times: tatalMs * count });
+      });
 
+      const final = countObj.sort((a, b) => b.times - a.times).slice(0, 100);
+      console.log(final);
     }
   }
   function first(p1, isAlll = false) {
@@ -29,7 +59,6 @@ export default function Home() {
           e["ts"].split("-")[0] === lastYear.toString()
       );
     }
-    console.log(data.filter((e) => e[p1] && e["ms_played"]));
     const ranges = [...new Set(arr1.map((ele) => ele[p1]))];
     const countObj = [];
     ranges.map((item) => {
@@ -40,7 +69,7 @@ export default function Home() {
     artistCount.push(...final);
     setArtistCount([...final]);
   }
-  function secondFn(p1, p2, p3, isAll = false) {
+  function secondFn(p1, p2, isAll = false) {
     let arr1;
     if (isAll) {
       arr1 = data.filter((e) => e[p1] && e["ms_played"]);
@@ -62,7 +91,7 @@ export default function Home() {
         .filter((ele) => ele[p1] === item)
         .map((e) => e["ms_played"])
         .reduce((a, b) => a + b, 0);
-      return countObj.push({ name: item, times: tatalMs * count });
+      countObj.push({ name: item, times: tatalMs * count });
     });
 
     const final = countObj.sort((a, b) => b.times - a.times).slice(0, 100);
@@ -95,13 +124,11 @@ export default function Home() {
   }
   useEffect(() => {
     // isAll ? allTime() : lastTime();
-    console.log(
-      Search(
-        "master_metadata_album_artist_name",
-        "master_metadata_track_name",
-        "master_metadata_album_album_name"
-      )
-    );
+    console.log(Search("master_metadata_album_artist_name"));
+    console.log(Search("master_metadata_track_name"));
+    // console.log(artistCount);
+    //  "master_metadata_track_name",
+    //     "master_metadata_album_album_name"
     return () => {};
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAll]);
