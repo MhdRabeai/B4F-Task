@@ -11,7 +11,7 @@ export default function Home() {
 
   const data = useMemo(() => {
     return jsonData.filter((e) => e["episode_name"]);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [jsonData]);
   function allTracks() {
     return data;
@@ -48,12 +48,13 @@ export default function Home() {
     amountTime();
     editData();
     return () => {};
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
   return isLoading ? (
     <Loading />
   ) : (
     <div className="container mt-6 mx-auto px-4 md:px-12">
+      <h2 className="text-xl font-bold mb-5">Episodes</h2>
       <div className="flex flex-col items-center gap-4 mb-6 mt-6">
         <div className="flex gap-4 p-4 px-0 flex-wrap w-full justify-center">
           <div className="transition hover:scale-105 text-center bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">

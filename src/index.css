@@ -79,3 +79,43 @@ body {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.pagi{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-block: 25px;
+}
+
+.pagi li{
+  width: 2.5rem;
+  --tw-text-opacity: 1;
+  color: rgba(0, 0, 0, 1);
+  margin-right: .25rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-width: 1px;
+  border-radius: 50%;
+  --tw-border-opacity: 1;
+  border-color: rgba(229, 231, 235, 1);
+  background-color: #fff;
+  margin-left: .25rem;
+  margin-right: .25rem;
+}
+.pagi li a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1rem;
+  color: rgba(0, 0, 0, 1);
+  height: 1rem;
+}
+.pagi li.selected {
+  background-color: #16a34a;
+
+}
+.pagi li.selected a{
+
+ color: #fff;
+}

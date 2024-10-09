@@ -5,7 +5,7 @@ import SideBar from "./SideBar";
 
 export default function Root() {
   return (
-    <div className="flex min-h-screen justify-end">
+    <div className="flex min-h-screen justify-end bg-gray-100">
       <SideBar />
       <div className=" w-3/4	">
         <Navbar />

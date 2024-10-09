@@ -4,6 +4,7 @@ import { FaChartSimple } from "react-icons/fa6";
 import { FaHeadphones } from "react-icons/fa6";
 import { FaListUl } from "react-icons/fa6";
 import { FaUserGroup } from "react-icons/fa6";
+import { FaFireAlt } from "react-icons/fa";
 
 const SideBar = () => {
   return (
@@ -22,6 +23,17 @@ const SideBar = () => {
 
         <NavLink
           to="/"
+          className={({ isActive }) =>
+            isActive
+              ? "active  flex justify-center md:justify-start items-center px-6 py-2.5 text-green-600 border-r-2	 border-green-600 text-md font-semibold	gap-3"
+              : " flex justify-center md:justify-start items-center px-6 py-2.5 text-gray-500 hover:text-green-600 text-md font-semibold gap-3"
+          }
+        >
+          <FaFireAlt />
+          <p className="md:block hidden">Trindy</p>
+        </NavLink>
+        <NavLink
+          to="/tracks"
           className={({ isActive }) =>
             isActive
               ? "active  flex justify-center md:justify-start items-center px-6 py-2.5 text-green-600 border-r-2	 border-green-600 text-md font-semibold	gap-3"

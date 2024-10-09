@@ -129,7 +129,8 @@ const Tracks = () => {
   return isLoading ? (
     <Loading />
   ) : (
-    <div className="flex flex-col items-center gap-4 mb-6 mt-6">
+    <div className="flex flex-col items-center gap-4 pb-6 pt-6  ">
+      <h2 className="text-xl font-bold mb-5">Tracks</h2>
       <div className="flex gap-4 p-4 flex-wrap w-full justify-center">
         <div className="transition hover:scale-105 text-center bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
           <h2 className="text-gray-500 font-medium text-sm">Total Plays</h2>

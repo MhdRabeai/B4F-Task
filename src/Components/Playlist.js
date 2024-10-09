@@ -75,6 +75,7 @@ const Playlist = () => {
     <Loading />
   ) : (
     <div className="container mt-6 mx-auto px-4 md:px-12">
+      <h2 className="text-xl font-bold mb-5">PlayList</h2>
       <div className="dropdown flex justify-end relative">
         <div className="bttn">
           <button className="bg-green-600 text-white font-semibold py-2 px-4 rounded inline-flex items-center ">
