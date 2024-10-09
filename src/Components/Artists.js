@@ -9,7 +9,7 @@ const Artists = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoadind(false);
-    }, 2000);
+    }, 1000);
   }, []);
   return isLoading ? (
     <Loading />

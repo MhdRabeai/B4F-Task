@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useMemo } from "react";
 import jsonData from "../spotify_data.json";
 import Loading from "./Loading";
+import Table from "./Table";
 
 const Playlist = () => {
   const [count0, setCount0] = useState({});
@@ -59,7 +60,7 @@ const Playlist = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoadind(false);
-    }, 2000);
+    }, 1000);
     editData();
   }, [data]);
 
@@ -102,42 +103,13 @@ const Playlist = () => {
           {Object.entries(count0)
             .slice(0, 1)
             .map(([key, arr], i) => (
-              <div className="pb-8">
+              <div className="pb-8" key={i}>
                 <div className="  overflow-x-auto ">
                   <div className="inline-block min-w-full shadow-md rounded-lg overflow-hidden">
-                    <h2 className="text-2xl font-semibold leading-tight">
+                    <h2 className="text-xl font-semibold leading-tight">
                       Top 100 {key}
                     </h2>
-                    <table key={i} className="min-w-full leading-normal ">
-                      <thead>
-                        <tr>
-                          <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                            Number
-                          </th>
-                          <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                            {key} Name
-                          </th>
-                          <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                            Count Palys:
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {arr.flat().map((ele, i) => (
-                          <tr key={i}>
-                            <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm">
-                              {i + 1}
-                            </td>
-                            <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm">
-                              {ele.name}
-                            </td>
-                            <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm">
-                              {ele.times} Times
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                    <Table i={i} key={key} arr={arr} hours={false} />
                   </div>
                 </div>
               </div>
@@ -145,42 +117,13 @@ const Playlist = () => {
           {Object.entries(count0)
             .slice(-2)
             .map(([key, dataArray], i) => (
-              <div className="pb-8">
+              <div className="pb-8" key={i}>
                 <div className="  overflow-x-auto ">
                   <div className="inline-block min-w-full shadow-md rounded-lg overflow-hidden">
-                    <h2 className="text-2xl font-semibold leading-tight">
+                    <h2 className="text-xl font-semibold leading-tight">
                       Top 100 {key}
                     </h2>
-                    <table key={i} className="min-w-full leading-normal ">
-                      <thead>
-                        <tr>
-                          <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                            Number
-                          </th>
-                          <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                            {key} Name
-                          </th>
-                          <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                            Count Palys:
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {dataArray.map((ele, i) => (
-                          <tr key={i}>
-                            <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm">
-                              {i + 1}
-                            </td>
-                            <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm">
-                              {ele.name}
-                            </td>
-                            <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm">
-                              {(ele.times / 1000 / 60 / 60).toFixed(1)} Hours
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                    <Table i={i} key={key} arr={dataArray} hours={true} />
                   </div>
                 </div>
               </div>
@@ -192,44 +135,3 @@ const Playlist = () => {
 };
 
 export default Playlist;
-{
-  /* <div className="pb-8">
-              <div className="  overflow-x-auto ">
-                <div className="inline-block min-w-full shadow-md rounded-lg overflow-hidden">
-                  <h2 className="text-2xl font-semibold leading-tight">
-                    Top 100 {key}
-                  </h2>
-                  <table key={i} className="min-w-full leading-normal ">
-                    <thead>
-                      <tr>
-                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                          Number
-                        </th>
-                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                          {key} Name
-                        </th>
-                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                          Count Palys:
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {dataArray.map((ele, i) => (
-                        <tr key={i}>
-                          <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm">
-                            {i + 1}
-                          </td>
-                          <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm">
-                            {ele.name}
-                          </td>
-                          <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm">
-                            {ele.times}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div> */
-}

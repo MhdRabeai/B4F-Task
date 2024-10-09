@@ -1,9 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useMemo, useState } from "react";
 import jsonData from "../spotify_data.json";
 import Loading from "./Loading";
 
 const Tracks = () => {
-  const hourArr = jsonData.map((e) => e["ts"].split("T")[1].split(":")[0]);
+  // const hourArr = jsonData.map((e) => e["ts"].split("T")[1].split(":")[0]);
   const [isLoading, setIsLoadind] = useState(true);
   const [whHour, setWhHour] = useState([]);
   const [tracksNum, setTracksNum] = useState(0);
@@ -30,23 +31,38 @@ const Tracks = () => {
   }
 
   function whichHour() {
+    // const ranges = [
+    //   ...new Set(
+    //     allTracks()
+    //       .map((e) => e["ts"].split("T")[1].split(":")[0])
+    //       .sort()
+    //   ),
+    // ];
     const ranges = [
       ...new Set(
         allTracks()
-          .map((e) => e["ts"].split("T")[1].split(":")[0])
-          .sort()
+          .map((e) => new Date(e["ts"]).getHours())
+          .sort((a, b) => a - b)
       ),
     ];
+
     const allHours = {};
+
+    const hourArr = allTracks()
+      .map((e) => new Date(e["ts"]).getHours())
+      .sort((a, b) => a - b);
+
     ranges.forEach((item) => {
-      const num = hourArr.filter((element) => element === item).length;
+      // console.log(item);
+      const num = hourArr.filter((element) => element === item);
       allHours[item] = num;
     });
+
     return setWhHour(
-      Object.entries(allHours).filter(
+      +Object.entries(allHours).filter(
         (ele) =>
           ele[1] === Object.values(allHours).reduce((a, b) => (a > b ? a : b))
-      )[0][0]
+      )[0][0] + 1
     );
   }
   function dailyAv() {
@@ -97,10 +113,11 @@ const Tracks = () => {
       setSession("winter");
     }
   }
+
   useEffect(() => {
     setTimeout(() => {
       setIsLoadind(false);
-    }, 2000);
+    }, 1000);
     tracks();
     amountTime();
     // withoutSkipe();
@@ -114,17 +131,17 @@ const Tracks = () => {
   ) : (
     <div className="flex flex-col items-center gap-4 mb-6 mt-6">
       <div className="flex gap-4 p-4 flex-wrap w-full justify-center">
-        <div className="bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
+        <div className="transition hover:scale-105 text-center bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
           <h2 className="text-gray-500 font-medium text-sm">Total Plays</h2>
           <p className="text-2xl font-bold text-green-600">{data.length}</p>
         </div>
-        <div className="bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
+        <div className="transition hover:scale-105 text-center bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
           <h2 className="text-gray-500 font-medium text-sm">
             Total Different Traks:
           </h2>
           <p className="text-2xl font-bold text-green-600">{tracksNum}</p>
         </div>
-        <div className="bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
+        <div className="transition hover:scale-105 text-center bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
           <h2 className="text-gray-500 font-medium text-sm">
             Total Time spent listening:
           </h2>
@@ -133,13 +150,12 @@ const Tracks = () => {
           </p>
           <span className="text-gray-400 text-sm ">Hours</span>
         </div>
-
-        <div className="bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
+        <div className="transition hover:scale-105 text-center bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
           <h2 className="text-gray-500 font-medium text-sm">Daily Average:</h2>
           <p className="text-2xl font-bold text-green-600">{dailyAverage}</p>
           <span className="text-gray-400 text-sm ">Hours</span>
         </div>
-        <div className="bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
+        <div className="transition hover:scale-105 text-center bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
           <h2 className="text-gray-500 font-medium text-sm">Which Hour:</h2>
 
           {whHour > 12 ? (
@@ -154,7 +170,7 @@ const Tracks = () => {
             </>
           )}
         </div>
-        <div className="bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
+        <div className="transition hover:scale-105 text-center bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
           <h2 className="text-gray-500 font-medium text-sm">What session</h2>
           <p className="text-2xl font-bold text-green-600">{session}</p>
         </div>
