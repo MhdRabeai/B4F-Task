@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from "react";
-import data from "../spotify_data.json";
+// import data from "../spotify_data.json";
 import Loading from "./Loading";
 
 export default function Home() {

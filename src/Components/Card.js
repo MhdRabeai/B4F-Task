@@ -1,5 +1,6 @@
 import React from "react";
 import { FaEye } from "react-icons/fa";
+import { IoMoon, IoSunny } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
 export default function Card({name,link}) {

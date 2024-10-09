@@ -28,19 +28,7 @@ const Tracks = () => {
         .reduce((a, b) => a + b)
     );
   }
-  // function withoutSkipe() {
-  //   setOutSkipe(
-  //     (
-  //       allTracks()
-  //         .filter((ele) => ele["skipped"])
-  //         .map((e) => e["ms_played"])
-  //         .reduce((a, b) => a + b) /
-  //       1000 /
-  //       60 /
-  //       60
-  //     ).toFixed(1)
-  //   );
-  // }
+
   function whichHour() {
     const ranges = [
       ...new Set(
@@ -64,7 +52,6 @@ const Tracks = () => {
   function dailyAv() {
     let amountMs = 0;
     const oddDays = new Set();
-    let dd = data[0];
     data.forEach((item) => {
       if (item["skipped"] === null) {
         amountMs += item["ms_played"];
