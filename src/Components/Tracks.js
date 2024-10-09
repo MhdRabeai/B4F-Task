@@ -1,14 +1,14 @@
 import React, { useEffect, useMemo, useState } from "react";
 import jsonData from "../spotify_data.json";
+import Loading from "./Loading";
 
 const Tracks = () => {
   const hourArr = jsonData.map((e) => e["ts"].split("T")[1].split(":")[0]);
-
+  const [isLoading, setIsLoadind] = useState(true);
   const [whHour, setWhHour] = useState([]);
   const [tracksNum, setTracksNum] = useState(0);
   const [amount, setAmount] = useState("");
   const [dailyAverage, setDailyAverage] = useState("");
-  // const [outSkipe, setOutSkipe] = useState("");
   const [session, setSession] = useState("");
   const data = useMemo(() => {
     return jsonData.filter((e) => e["ms_played"]);
@@ -111,6 +111,9 @@ const Tracks = () => {
     }
   }
   useEffect(() => {
+    setTimeout(() => {
+      setIsLoadind(false);
+    }, 2000);
     tracks();
     amountTime();
     // withoutSkipe();
@@ -119,53 +122,54 @@ const Tracks = () => {
     whatSession();
     return () => {};
   }, []);
-  return (
-    <div class="flex flex-col items-center gap-4 mb-6 mt-6">
-      <div class="flex gap-4 p-4 flex-wrap w-full justify-center">
-        <div class="bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
-          <h2 class="text-gray-500 font-medium text-sm">Total Plays</h2>
-          <p class="text-2xl font-bold">{data.length}</p>
+  return isLoading ? (
+    <Loading />
+  ) : (
+    <div className="flex flex-col items-center gap-4 mb-6 mt-6">
+      <div className="flex gap-4 p-4 flex-wrap w-full justify-center">
+        <div className="bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
+          <h2 className="text-gray-500 font-medium text-sm">Total Plays</h2>
+          <p className="text-2xl font-bold text-green-600">{data.length}</p>
         </div>
-        <div class="bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
-          <h2 class="text-gray-500 font-medium text-sm">
+        <div className="bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
+          <h2 className="text-gray-500 font-medium text-sm">
             Total Different Traks:
           </h2>
-          <p class="text-2xl font-bold">{tracksNum}</p>
+          <p className="text-2xl font-bold text-green-600">{tracksNum}</p>
         </div>
-        <div class="bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
-          <h2 class="text-gray-500 font-medium text-sm">
+        <div className="bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
+          <h2 className="text-gray-500 font-medium text-sm">
             Total Time spent listening:
           </h2>
-          <p class="text-2xl font-bold">
+          <p className="text-2xl font-bold text-green-600">
             {(amount / 1000 / 60 / 60).toFixed(1)}
           </p>
-          <span class="text-gray-400 text-sm ">Hours</span>
+          <span className="text-gray-400 text-sm ">Hours</span>
         </div>
 
-        <div class="bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
-          <h2 class="text-gray-500 font-medium text-sm">Daily Average:</h2>
-          <p class="text-2xl font-bold">{dailyAverage}</p>
-          <span class="text-gray-400 text-sm ">Hours</span>
+        <div className="bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
+          <h2 className="text-gray-500 font-medium text-sm">Daily Average:</h2>
+          <p className="text-2xl font-bold text-green-600">{dailyAverage}</p>
+          <span className="text-gray-400 text-sm ">Hours</span>
         </div>
-        <div class="bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
-          <h2 class="text-gray-500 font-medium text-sm">Which Hour:</h2>
-          {/* <p class="text-2xl font-bold">{data.length}</p> */}
+        <div className="bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
+          <h2 className="text-gray-500 font-medium text-sm">Which Hour:</h2>
+
           {whHour > 12 ? (
             <>
-              <p class="text-2xl font-bold">{whHour - 12}</p>
-              <span class="text-gray-400 text-sm ">PM </span>
+              <p className="text-2xl font-bold text-green-600">{whHour - 12}</p>
+              <span className="text-gray-400 text-sm ">PM </span>
             </>
           ) : (
             <>
-              <p class="text-2xl font-bold">{whHour}</p>
-              <span class="text-gray-400 text-sm ">AM </span>
+              <p className="text-2xl font-bold text-green-600">{whHour}</p>
+              <span className="text-gray-400 text-sm ">AM </span>
             </>
           )}
-          {/* <span class="text-gray-400 text-sm ">Hours</span> */}
         </div>
-        <div class="bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
-          <h2 class="text-gray-500 font-medium text-sm">What session</h2>
-          <p class="text-2xl font-bold">{session}</p>
+        <div className="bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
+          <h2 className="text-gray-500 font-medium text-sm">What session</h2>
+          <p className="text-2xl font-bold text-green-600">{session}</p>
         </div>
       </div>
     </div>

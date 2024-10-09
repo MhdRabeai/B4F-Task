@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useMemo } from "react";
 import jsonData from "../spotify_data.json";
+import Loading from "./Loading";
 
 const Playlist = () => {
   const [count0, setCount0] = useState({});
   const [isAll, setIsAll] = useState(true);
-
+  const [isLoading, setIsLoadind] = useState(true);
   const data = useMemo(() => {
     const lastYear = new Date().getFullYear() - 1;
     return jsonData.filter(
@@ -56,10 +57,15 @@ const Playlist = () => {
     });
   }
   useEffect(() => {
+    setTimeout(() => {
+      setIsLoadind(false);
+    }, 2000);
     editData();
   }, [data]);
 
-  return (
+  return isLoading ? (
+    <Loading />
+  ) : (
     <div className="container mt-6 mx-auto px-4 md:px-12">
       <div className="dropdown flex justify-end relative">
         <button className="bg-green-600 text-white font-semibold py-2 px-4 rounded inline-flex items-center ">
