@@ -5,9 +5,9 @@ import SideBar from "./SideBar";
 
 export default function Root() {
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen justify-end">
       <SideBar />
-      <div className="flex-1 w-3/4	">
+      <div className=" w-3/4	">
         <Navbar />
         <Outlet />
       </div>

@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
 // import { Link, NavLink } from "react-router-dom";
 // import { IoMoon } from "react-icons/io5";
 // import { IoSunny } from "react-icons/io5";
 export default function Navbar() {
-  const [dark, setDark] = useState(false);
+  // const [dark, setDark] = useState(false);
 
-  const darkModeHandler = () => {
-    setDark(!dark);
-    document.body.classList.toggle("dark");
-  };
+  // const darkModeHandler = () => {
+  //   setDark(!dark);
+  //   document.body.classList.toggle("dark");
+  // };
 
   return (
     <div className="flex justify-between py-3 px-6 bg-gray-50  ">

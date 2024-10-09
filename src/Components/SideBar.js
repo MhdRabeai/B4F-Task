@@ -7,7 +7,7 @@ import { FaUserGroup } from "react-icons/fa6";
 
 const SideBar = () => {
   return (
-    <div className=" md:w-64 w-1/4 bg-gray-50  shadow-lg">
+    <div className="  w-1/4 bg-gray-50  shadow-lg fixed left-0 h-full">
       <div className=" py-3 px-2 md:px-6 text-center border-b-2 border-green-500">
         <NavLink to="/" className="text-3xl md:text-4xl	">
           B4F
