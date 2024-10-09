@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import { FaAngleDown } from "react-icons/fa";
 const Table = (props) => {
   let [state, setState] = useState(true);
   let [arr, setArr] = useState([]);
@@ -23,6 +23,7 @@ const Table = (props) => {
       : setData(arr) && setFilter("");
   }
   function handleClick(by) {
+    // props.handleUpdate();
     setState(true);
     if (state) {
       setArr(
@@ -32,9 +33,9 @@ const Table = (props) => {
           return 0;
         })
       );
-      console.log(arr);
       setState(false);
     } else {
+      // props.handleUpdate();
       setArr(
         arr.sort(function (a, b) {
           if (a[by] > b[by]) return -1;
@@ -46,18 +47,19 @@ const Table = (props) => {
     }
   }
   useEffect(() => {
+    console.log("table");
     setArr(props.arr.flat().map((ele, i) => ({ id: i, ...ele })));
     isData();
-  }, [filter, state]);
+  }, [filter, state, props.arr]);
   return (
     <>
-      <div className="inpt flex gap-2 items-center ">
+      <div className="p-2">
         <input
           type="text"
+          className="relative outline-none rounded py-1 px-2 w-full shadow text-sm text-gray-700 placeholder-gray-400 bg-gray-100 outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:ring-2 focus:ring-green-600"
           name="search"
-          placeholder="Search .."
+          placeholder="Search by Name.."
           onChange={handleInput}
-          className=" mb-4 h-10 w-50 rounded-md bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:ring-2 focus:ring-blue-400"
         />
       </div>
       <table
@@ -67,18 +69,21 @@ const Table = (props) => {
         <thead>
           <tr className="bg-green-600 ">
             <th className="text-left" onClick={() => handleClick("id")}>
-              <button className="px-5 py-3  text-left text-xs font-semibold text-white uppercase tracking-wider">
+              <button className="flex items-center gap-2 px-5 py-3  text-left text-xs font-semibold text-white uppercase tracking-wider">
                 Number
+                <FaAngleDown />
               </button>
             </th>
             <th className="text-left" onClick={() => handleClick("name")}>
-              <button className="px-5 py-3  text-left text-xs font-semibold text-white uppercase tracking-wider">
-                {props.key} Name
+              <button className="flex items-center gap-2 px-5 py-3  text-left text-xs font-semibold text-white uppercase tracking-wider">
+                {`${props.name} Name`}
+                <FaAngleDown />
               </button>
             </th>
             <th className="text-left" onClick={() => handleClick("times")}>
-              <button className="px-5 py-3  text-left text-xs font-semibold text-white uppercase tracking-wider">
-                Count Palys:
+              <button className="flex items-center gap-2 px-5 py-3  text-left text-xs font-semibold text-white uppercase tracking-wider">
+                Count Palys
+                <FaAngleDown />
               </button>
             </th>
           </tr>
@@ -130,5 +135,3 @@ const Table = (props) => {
 };
 
 export default Table;
-{
-}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useMemo } from "react";
 import jsonData from "../spotify_data.json";
 import Loading from "./Loading";
-import Table from "./Table";
+import AccordionItem from "./Accordion";
 
 const Playlist = () => {
   const [count0, setCount0] = useState({});
@@ -15,6 +15,12 @@ const Playlist = () => {
         (isAll || e["ts"].split("-")[0] === lastYear.toString())
     );
   }, [isAll, jsonData]);
+  const [update, setUpdate] = useState(false);
+
+  // function handleUpdate() {
+  //   setUpdate(!update);
+  // }
+
   function editData() {
     const artist = {};
     const track = {};
@@ -57,77 +63,61 @@ const Playlist = () => {
       Albums: sortedAlbums,
     });
   }
+
   useEffect(() => {
-    console.log(count0);
     setTimeout(() => {
       setIsLoadind(false);
     }, 1000);
     editData();
-  }, [data]);
+  }, [data, update]);
 
   return isLoading ? (
     <Loading />
   ) : (
     <div className="container mt-6 mx-auto px-4 md:px-12">
       <div className="dropdown flex justify-end relative">
-        <button className="bg-green-600 text-white font-semibold py-2 px-4 rounded inline-flex items-center ">
-          <span className="mr-1">Show By</span>
-          <svg
-            className="fill-current h-4 w-4"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-          >
-            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />{" "}
-          </svg>
-        </button>
-        <ul className="dropdown-menu absolute hidden text-gray-700 pt-1 top-9">
-          <li className="w-full">
-            <button
-              className="w-full rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block "
-              onClick={() => setIsAll(true)}
+        <div className="bttn">
+          <button className="bg-green-600 text-white font-semibold py-2 px-4 rounded inline-flex items-center ">
+            <span className="mr-1">Show By</span>
+            <svg
+              className="fill-current h-4 w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
             >
-              All Time
-            </button>
-          </li>
-          <li className="w-full">
-            <button
-              className="w-full bg-gray-200 hover:bg-gray-400 py-2 px-4 block "
-              onClick={() => setIsAll(false)}
-            >
-              Last year
-            </button>
-          </li>
-        </ul>
+              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />{" "}
+            </svg>
+          </button>
+          <ul className="dropdown-menu absolute hidden text-gray-700 pt-1 top-9 z-10	right-0">
+            <li className="w-full">
+              <button
+                className="w-full rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block "
+                onClick={() => setIsAll(true)}
+              >
+                All Time
+              </button>
+            </li>
+            <li className="w-full">
+              <button
+                className="w-full bg-gray-200 hover:bg-gray-400 py-2 px-4 block "
+                onClick={() => setIsAll(false)}
+              >
+                Last year
+              </button>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div className="flex ">
+      <div className="flex py-6">
         <div className="container mx-auto ">
           {Object.entries(count0)
             .slice(0, 1)
-            .map(([key, arr], i) => (
-              <div className="pb-8" key={i}>
-                <div className="  overflow-x-auto ">
-                  <div className="inline-block min-w-full shadow-md rounded-lg overflow-hidden">
-                    <h2 className="text-xl font-semibold leading-tight">
-                      Top 100 {key}
-                    </h2>
-                    <Table i={i} key={key} arr={arr} hours={false} />
-                  </div>
-                </div>
-              </div>
+            .map(([key, arr], id) => (
+              <AccordionItem key={id} faq={arr} name={key} hours={false} />
             ))}
           {Object.entries(count0)
             .slice(-2)
-            .map(([key, dataArray], i) => (
-              <div className="pb-8" key={i}>
-                <div className="  overflow-x-auto ">
-                  <div className="inline-block min-w-full shadow-md rounded-lg overflow-hidden">
-                    <h2 className="text-xl font-semibold leading-tight">
-                      Top 100 {key}
-                    </h2>
-                    <Table i={i} key={key} arr={dataArray} hours={true} />
-                  </div>
-                </div>
-              </div>
+            .map(([key, dataArray], id) => (
+              <AccordionItem key={id} faq={dataArray} name={key} hours={true} />
             ))}
         </div>
       </div>
