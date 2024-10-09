@@ -58,6 +58,7 @@ const Playlist = () => {
     });
   }
   useEffect(() => {
+    console.log(count0);
     setTimeout(() => {
       setIsLoadind(false);
     }, 1000);
