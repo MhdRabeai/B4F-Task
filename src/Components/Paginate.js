@@ -66,7 +66,7 @@ const Art = ({ currentItems }) => {
   const msToTime = (duration) => {
     const seconds = Math.floor((duration / 1000) % 60);
     const minutes = Math.floor((duration / (1000 * 60)) % 60);
-    const hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
+    const hours = Math.floor(duration / (1000 * 60 * 60));
 
     return {
       hours: hours < 10 ? "" + hours : hours,
@@ -92,7 +92,7 @@ const Art = ({ currentItems }) => {
           return (
             <div
               key={artist.name}
-              className="dark:bg-[#333] bg-gray-100 rounded-lg p-5 text-center shadow-xl"
+              className="bg-[#fff] dark:bg-[#333]  rounded-lg p-5 text-center shadow-xl"
             >
               <h1 className="text-xl text-center font-bold text-green-500 mb-2">
                 {artist.name}
