@@ -111,18 +111,18 @@ const Table = (props) => {
               ))
             : data.map((ele, i) => (
                 <tr key={i}>
-                  <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm ">
+                  <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm dark:bg-[#333] dark:text-[#fff]">
                     {ele.id + 1}
                   </td>
-                  <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm ">
+                  <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm dark:bg-[#333] dark:text-[#fff]">
                     {ele.name}
                   </td>
                   {!props.hours ? (
-                    <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm ">
+                    <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm dark:bg-[#333] dark:text-[#fff]">
                       {ele.times} Times
                     </td>
                   ) : (
-                    <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm ">
+                    <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm dark:bg-[#333] dark:text-[#fff]">
                       {(ele.times / 1000 / 60 / 60).toFixed(1)} Hours
                     </td>
                   )}
