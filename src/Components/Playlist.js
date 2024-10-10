@@ -15,11 +15,6 @@ const Playlist = () => {
         (isAll || e["ts"].split("-")[0] === lastYear.toString())
     );
   }, [isAll, jsonData]);
-  const [update, setUpdate] = useState(false);
-
-  // function handleUpdate() {
-  //   setUpdate(!update);
-  // }
 
   function editData() {
     const artist = {};
@@ -69,13 +64,13 @@ const Playlist = () => {
       setIsLoadind(false);
     }, 1000);
     editData();
-  }, [data, update]);
+  }, [data]);
 
   return isLoading ? (
     <Loading />
   ) : (
     <div className="container mt-6 mx-auto px-4 md:px-12">
-      <h2 className="text-xl font-bold mb-5">PlayList</h2>
+      <h2 className="text-xl font-bold mb-5 dark:text-[#fff]">PlayList</h2>
       <div className="dropdown flex justify-end relative">
         <div className="bttn">
           <button className="bg-green-600 text-white font-semibold py-2 px-4 rounded inline-flex items-center ">

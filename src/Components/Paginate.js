@@ -77,7 +77,7 @@ const Art = ({ currentItems }) => {
 
   return (
     <div className="container mt-6 mx-auto px-4 md:px-12 overflow-hidden		">
-      <h2 className="text-xl font-bold mb-5">Artists</h2>
+      <h2 className="text-xl font-bold mb-5 dark:text-[#fff]">Artists</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
         {currentItems.map((artist) => {
           const {
@@ -92,14 +92,14 @@ const Art = ({ currentItems }) => {
           return (
             <div
               key={artist.name}
-              className="bg-gray-100 rounded-lg p-5 text-center shadow-xl"
+              className="dark:bg-[#333] bg-gray-100 rounded-lg p-5 text-center shadow-xl"
             >
-              <h1 className="text-xl text-center font-bold text-green-800 mb-2">
+              <h1 className="text-xl text-center font-bold text-green-500 mb-2">
                 {artist.name}
               </h1>
               <div className="flex  border-b border-green-200 justify-center text-lg sm:text-xl mb-6">
                 <div className="text-center w-1/2 sm:w-auto mb-2">
-                  <p className="text-md text-gray-700">
+                  <p className="text-md text-gray-700 dark:text-[#fff]">
                     Total Plays
                     <br />
                     <span className="text-3xl font-semibold font-mono text-green-600">
@@ -108,7 +108,7 @@ const Art = ({ currentItems }) => {
                   </p>
                 </div>
                 <div className="text-center w-1/2 sm:w-auto mb-4">
-                  <p className="text-gray-700">
+                  <p className="text-gray-700 dark:text-[#fff]">
                     Unique Tracks
                     <br />
                     <span className="text-3xl font-semibold font-mono text-green-600">
@@ -119,7 +119,7 @@ const Art = ({ currentItems }) => {
               </div>
               <div className="flex justify-between border-b border-green-200 text-lg sm:text-xl mb-6 pb-1">
                 <div className="text-center w-1/2 sm:w-auto mb-4">
-                  <p className="text-gray-700">
+                  <p className="text-gray-700 dark:text-[#fff]">
                     Hours Listened
                     <br />
                     <span className="text-3xl font-semibold font-mono text-green-600">
@@ -128,7 +128,7 @@ const Art = ({ currentItems }) => {
                   </p>
                 </div>
                 <div className="text-center w-1/2 sm:w-auto mb-4">
-                  <p className="text-gray-700">
+                  <p className="text-gray-700 dark:text-[#fff]">
                     Top Season
                     <br />
                     <span className="text-2xl font-semibold font-mono text-green-600">
@@ -153,10 +153,10 @@ const Art = ({ currentItems }) => {
                   Listening Rate
                 </p>
               </div>
-              <h2 className="text-lg sm:text-xl font-semibold text-green-800 mt-6">
+              <h2 className="text-lg sm:text-xl font-semibold text-green-400 mt-6">
                 Top Songs
               </h2>
-              <ol className="list-decimal list-inside text-left text-green-500">
+              <ol className="list-decimal list-inside text-left text-green-600">
                 {topArtistTracks.map((track, index) => (
                   <li key={index} className="text-sm sm:text-base">
                     {track}
@@ -217,14 +217,20 @@ const Paginate = ({ itemsPerPage }) => {
         previousLabel={"<"}
         nextLabel={">"}
         breakLabel={".."}
-        pageCount={Math.ceil(artists.length / itemsPerPage)}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={3}
+        pageCount={pageCount}
+        marginPagesDisplayed={1}
+        pageRangeDisplayed={1}
         onPageChange={handlePageClick}
-        containerClassName={"flex justify-center mb-4 space-x-2"}
-        pageClassName={"px-4 py-2 border border-gray-300 rounded"}
-        previousClassName={"px-4 py-2 border border-gray-300 rounded"}
-        nextClassName={"px-4 py-2 border border-gray-300 rounded"}
+        containerClassName={"flex justify-center items-center mb-4 space-x-2"}
+        pageClassName={
+          "px-3 py-2 border border-gray-300 rounded dark:text-[#fff]"
+        }
+        previousClassName={
+          "px-1 py-2 border border-gray-300 rounded dark:text-[#fff]"
+        }
+        nextClassName={
+          "px-1 py-2 border border-gray-300 rounded dark:text-[#fff]"
+        }
         activeClassName={"bg-green-500 text-white"}
       />
     </>

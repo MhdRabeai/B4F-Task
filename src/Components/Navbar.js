@@ -13,7 +13,7 @@ export default function Navbar() {
     return () => {};
   }, []);
   return (
-    <div className="flex justify-between py-2 px-6 bg-gray-50  ">
+    <div className="flex justify-between py-2 px-6 bg-gray-50  dark:bg-[#333333]">
       <div className="   flex flex-col md:flex-row items-start md:items-center justify-between ">
         <div>
           <h4 className="text-2xl font-bold leading-tight text-gray-800 dark:text-gray-100">

@@ -130,49 +130,61 @@ const Tracks = () => {
     <Loading />
   ) : (
     <div className="flex flex-col items-center gap-4 pb-6 pt-6  ">
-      <h2 className="text-xl font-bold mb-5">Tracks</h2>
+      <h2 className="text-xl font-bold mb-5 dark:text-white">Tracks</h2>
       <div className="flex gap-4 p-4 flex-wrap w-full justify-center">
-        <div className="transition hover:scale-105 text-center bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
-          <h2 className="text-gray-500 font-medium text-sm">Total Plays</h2>
+        <div className="dark:bg-[#333] transition hover:scale-105 text-center bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
+          <h2 className="text-gray-500 font-medium text-sm dark:text-[#fff]">
+            Total Plays
+          </h2>
           <p className="text-2xl font-bold text-green-600">{data.length}</p>
         </div>
-        <div className="transition hover:scale-105 text-center bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
-          <h2 className="text-gray-500 font-medium text-sm">
+        <div className="dark:bg-[#333] transition hover:scale-105 text-center bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
+          <h2 className="text-gray-500 font-medium text-sm  dark:text-[#fff]">
             Total Different Traks:
           </h2>
           <p className="text-2xl font-bold text-green-600">{tracksNum}</p>
         </div>
-        <div className="transition hover:scale-105 text-center bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
-          <h2 className="text-gray-500 font-medium text-sm">
-            Total Time spent listening:
+        <div className="dark:bg-[#333] transition hover:scale-105 text-center bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
+          <h2 className="text-gray-500 font-medium text-sm  dark:text-[#fff]">
+            Total listening Time:
           </h2>
           <p className="text-2xl font-bold text-green-600">
             {(amount / 1000 / 60 / 60).toFixed(1)}
           </p>
-          <span className="text-gray-400 text-sm ">Hours</span>
+          <span className="text-gray-400 text-sm dark:text-[#ddd]">Hours</span>
         </div>
-        <div className="transition hover:scale-105 text-center bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
-          <h2 className="text-gray-500 font-medium text-sm">Daily Average:</h2>
+        <div className="dark:bg-[#333] transition hover:scale-105 text-center bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
+          <h2 className="text-gray-500 font-medium text-sm dark:text-[#fff]">
+            Daily Average:
+          </h2>
           <p className="text-2xl font-bold text-green-600">{dailyAverage}</p>
-          <span className="text-gray-400 text-sm ">Hours</span>
+          <span className="text-gray-400 text-sm dark:text-[#ddd]">Hours</span>
         </div>
-        <div className="transition hover:scale-105 text-center bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
-          <h2 className="text-gray-500 font-medium text-sm">Which Hour:</h2>
+        <div className="dark:bg-[#333] transition hover:scale-105 text-center bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
+          <h2 className="text-gray-500 font-medium text-sm dark:text-[#fff]">
+            Which Hour:
+          </h2>
 
           {whHour > 12 ? (
             <>
               <p className="text-2xl font-bold text-green-600">{whHour - 12}</p>
-              <span className="text-gray-400 text-sm ">PM </span>
+              <span className="text-gray-400 text-sm dark:text-[#ddd]">
+                PM{" "}
+              </span>
             </>
           ) : (
             <>
               <p className="text-2xl font-bold text-green-600">{whHour}</p>
-              <span className="text-gray-400 text-sm ">AM </span>
+              <span className="text-gray-400 text-sm dark:text-[#ddd]">
+                AM{" "}
+              </span>
             </>
           )}
         </div>
-        <div className="transition hover:scale-105 text-center bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
-          <h2 className="text-gray-500 font-medium text-sm">What session</h2>
+        <div className="dark:bg-[#333] transition hover:scale-105 text-center bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
+          <h2 className="text-gray-500 font-medium text-sm dark:text-[#fff]">
+            What session
+          </h2>
           <p className="text-2xl font-bold text-green-600">{session}</p>
         </div>
       </div>

@@ -8,89 +8,89 @@ body {
 
 .card {
   box-shadow: 0px 5px 10px rgba(90, 116, 148, 0.3);
- background-color: #fff;
- border-radius: 8px;
- font-size: 13px;
- font-weight: 500;
- letter-spacing: 0.3px;
- color: #475f7b;
- overflow: hidden;
+  background-color: #fff;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  color: #475f7b;
+  overflow: hidden;
 }
 .rc-accordion-toggle {
- display: flex;
- align-items: flex-start;
- cursor: pointer;
- justify-content: space-between;
- transition: 0.3s;
+  display: flex;
+  align-items: flex-start;
+  cursor: pointer;
+  justify-content: space-between;
+  transition: 0.3s;
 }
-.rc-accordion-toggle.active .icon{
- transform: rotate(180deg);
- color: #fff;
- transition: 0.3s;
+.rc-accordion-toggle.active .icon {
+  transform: rotate(180deg);
+  color: #fff;
+  transition: 0.3s;
 }
-.rc-accordion-card{
- border: 1px solid #ddd;
- border-radius: 5px;
- margin-bottom: 10px;
- overflow: hidden;
+.rc-accordion-card {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  overflow: hidden;
 }
-.rc-accordion-card:last-child{
- margin-bottom: 0;
+.rc-accordion-card:last-child {
+  margin-bottom: 0;
 }
-.rc-accordion-title{
- font-weight: 500;
- font-size: 14px;
- position: relative;
- margin-bottom: 0;
- color: #475F7B;
- transition: 0.3s;
+.rc-accordion-title {
+  font-weight: 500;
+  font-size: 14px;
+  position: relative;
+  margin-bottom: 0;
+  color: #475f7b;
+  transition: 0.3s;
 }
-.rc-accordion-toggle.active .rc-accordion-title{
- color: #fff;
+.rc-accordion-toggle.active .rc-accordion-title {
+  color: #fff;
 }
-.rc-accordion-icon{
- position: relative;
- top: 2px;
- color: #475F7B;
- transition: 0.35s;
- font-size: 12px;
+.rc-accordion-icon {
+  position: relative;
+  top: 2px;
+  color: #475f7b;
+  transition: 0.35s;
+  font-size: 12px;
 }
-.rc-accordion-body{
- flex: 1 1 auto;
- min-height: 1px;
- padding: 15px;
+.rc-accordion-body {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 15px;
 }
-.rc-accordion-body p{
- margin-bottom: 0;
- font-size: 14px;
- font-weight: 400;
- line-height: 24px;
- color: #727E8C;
+.rc-accordion-body p {
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #727e8c;
 }
-.rc-collapse{
- position: relative;
- height: 0;
- overflow: hidden;
- transition: height 0.35s ease;
+.rc-collapse {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.35s ease;
 }
-.rc-collapse.show{
- height: auto;
+.rc-collapse.show {
+  height: auto;
 }
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-.pagi{
+.pagi {
   display: flex;
   justify-content: center;
   align-items: center;
   padding-block: 25px;
 }
 
-.pagi li{
+.pagi li {
   width: 2.5rem;
   --tw-text-opacity: 1;
   color: rgba(0, 0, 0, 1);
-  margin-right: .25rem;
+  margin-right: 0.25rem;
   height: 2.5rem;
   display: flex;
   justify-content: center;
@@ -100,10 +100,10 @@ body {
   --tw-border-opacity: 1;
   border-color: rgba(229, 231, 235, 1);
   background-color: #fff;
-  margin-left: .25rem;
-  margin-right: .25rem;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
 }
-.pagi li a{
+.pagi li a {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -113,9 +113,7 @@ body {
 }
 .pagi li.selected {
   background-color: #16a34a;
-
 }
-.pagi li.selected a{
-
- color: #fff;
+.pagi li.selected a {
+  color: #fff;
 }

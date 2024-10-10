@@ -29,26 +29,32 @@ const Trindy = () => {
   return isLoading ? (
     <Loading />
   ) : (
-    <div className="flex flex-col items-center gap-4 mb-6 mt-6 bg-gray-100">
-      <h2 className="text-xl font-bold mb-5">The Most Trendy Songs</h2>
+    <div className="flex flex-col items-center gap-4 mb-6 mt-6  ">
+      <h2 className="text-xl font-bold mb-5 dark:text-white">
+        The Most Trendy Songs
+      </h2>
       {mostPlayedSongs.length === 0 ? (
-        <p>No songs available in this date range.</p>
+        <p className="dark:text-[#fff]">
+          No songs available in this date range.
+        </p>
       ) : (
         <div className="flex gap-4 p-4 flex-wrap w-full justify-center">
           {mostPlayedSongs.map((song, index) => (
             <div
               key={index}
-              className="transition hover:scale-105 text-center bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-1"
+              className="dark:bg-[#333] transition hover:scale-105 text-center bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-1"
             >
               <h3 className="text-xl font-semibold  text-emerald-600">
                 {song.master_metadata_track_name}
               </h3>
               {song.master_metadata_album_artist_name && (
-                <p className="text-gray-700 ">
+                <p className="text-gray-700 dark:text-[#fff]">
                   by {song.master_metadata_album_artist_name}
                 </p>
               )}
-              <p className="text-gray-500">Plays: {song.ms_played}</p>
+              <p className="text-gray-500 dark:text-[#ddd]">
+                Plays: {song.ms_played}
+              </p>
             </div>
           ))}
         </div>

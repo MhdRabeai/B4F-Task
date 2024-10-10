@@ -53,28 +53,32 @@ export default function Home() {
   return isLoading ? (
     <Loading />
   ) : (
-    <div className="container mt-6 mx-auto px-4 md:px-12">
-      <h2 className="text-xl font-bold mb-5">Episodes</h2>
+    <div className=" container mt-6 mx-auto px-4 md:px-12">
+      <h2 className="text-xl font-bold mb-5 dark:text-[#fff]">Episodes</h2>
       <div className="flex flex-col items-center gap-4 mb-6 mt-6">
         <div className="flex gap-4 p-4 px-0 flex-wrap w-full justify-center">
-          <div className="transition hover:scale-105 text-center bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
-            <h2 className="text-gray-500 font-medium text-sm">Total Plays</h2>
+          <div className="dark:bg-[#333] transition hover:scale-105 text-center bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
+            <h2 className="text-gray-500 font-medium text-sm dark:text-[#ddd]">
+              Total Plays
+            </h2>
             <p className="text-2xl font-bold text-green-600">{data.length}</p>
           </div>
-          <div className="transition hover:scale-105 text-center bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
-            <h2 className="text-gray-500 font-medium text-sm">
+          <div className="dark:bg-[#333] transition hover:scale-105 text-center bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
+            <h2 className="text-gray-500 font-medium text-sm dark:text-[#ddd]">
               Total Different Episodes:
             </h2>
             <p className="text-2xl font-bold text-green-600">{tracksNum}</p>
           </div>
-          <div className="transition hover:scale-105 text-center bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
-            <h2 className="text-gray-500 font-medium text-sm">
+          <div className="dark:bg-[#333] transition hover:scale-105 text-center bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full sm:w-1/2 md:w-1/4 justify-center gap-2">
+            <h2 className="text-gray-500 font-medium text-sm dark:text-[#ddd]">
               Total Time spent Watching:
             </h2>
             <p className="text-2xl font-bold text-green-600">
               {(amount / 1000 / 60 / 60).toFixed(1)}
             </p>
-            <span className="text-gray-400 text-sm ">Hours</span>
+            <span className="text-gray-400 text-sm dark:text-[#fff]">
+              Hours
+            </span>
           </div>
         </div>
         {count0
@@ -84,7 +88,7 @@ export default function Home() {
                 <div className="pb-8 w-full" key={i}>
                   <div className="  overflow-x-auto ">
                     <div className="inline-block min-w-full shadow-md rounded-lg overflow-hidden">
-                      <h2 className="text-xl font-semibold leading-tight">
+                      <h2 className="text-xl font-semibold leading-tight dark:text-[#fff]">
                         Top 10 {key}s
                       </h2>
                       <Table i={i} key={key} arr={arr} hours={""} />
